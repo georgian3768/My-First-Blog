@@ -27,8 +27,15 @@
         ->  python manage.py makemigrations blog
         ->  python manage.py migrate blog
 //  Register model <post> with Django Admin (Edit blog/admin.py)
-        ->admin.register.site(Post)
+        ->      admin.register.site(Post)
 //  Start WebServer (python manage.py runserver)
 //  Create superuser in terminal (python manage.py createsuperuser)
 //  login to django using superuser credentials (127.0.0.1:8000/admin)
-//
+//  add some blog posts{objects}
+//  Deploy on internet
+        ->   Install Git
+        ->   Configure Git Repository
+                ->  $ git init (in base dir)
+                ->  $ git config --global user.name "Your Name"      <admin>
+                ->  $ git config --global user.email you@example.com <georgian3768@gmail.com>
+                ->  Create .gitignore and add files to ignore (to ignore files)
