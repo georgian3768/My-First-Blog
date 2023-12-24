@@ -25,5 +25,5 @@ $RECYCLE.BIN/
 .history/
 *.code-workspace
 
-#procedure
-Procedure.txt
+#all text files
+*.txt
