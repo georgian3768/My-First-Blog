@@ -38,4 +38,18 @@
                 ->  $ git init (in base dir)
                 ->  $ git config --global user.name "Your Name"      <admin>
                 ->  $ git config --global user.email you@example.com <georgian3768@gmail.com>
-                ->  Create .gitignore and add files to ignore (to ignore files)
+        ->  Create .gitignore and add files to ignore (to ignore files)
+        ->  add files to repository
+                ->  $ git add . (current_dir)
+                ->  $ git commit -m "<first commit>"
+        ->  Push Your code to github
+                ->  create a new repo on github
+                ->  Push your repo to Github repo
+        ->  Setup project on pythonanywhere.com
+                ->  Sign up for a PythonAnywhere account
+                ->  Create a PythonAnywhere API token
+                ->  Configure our site on PythonAnywhere
+                        ->  start a "Bash" console (From Dashboard) // Deploying a web app on PythonAnywhere involves pulling down your code from GitHub, and then configuring PythonAnywhere to recognise it and start serving it as a web application.
+                        ->  Install pythonanywhere ($ pip3.8 install --user pythonanywhere)
+                        ->  Configure your app from GitHub ($ pa_autoconfigure_django.py --python=3.8 https://github.com/<your-github-username>/<my-first-blog.git>)
+                        ->  Create SuperUser (db.sqlite is not copied due .gitignore) ($ python manage.py createsuperuser)
