@@ -101,5 +101,36 @@
                 ->  cd ~\<user name>.pythonanywhere.com
                 ->  git pull
                 ->  Reload web app
-                
+// Use CSS to style up template<post_list.html>
+        ->  add bootstrap to html head
+        ->  create dir for static files(CSS and Images) and add CSS file (blog\static\css\blog.css)
+        ->  include static in <post_list.html> ( {% load static %} )
+        ->  point to blog.css ( <link rel="stylesheet" href="{% static 'css/blog.css' %}"> )
+//  Template Extending
+        ->  Create blog/templates/base.html
+                  
+                    -----html code------
+                      {% block content %}
+                      {% endblock %}
+                    -----html code-------
+
+        ->  in blog/templates/blog/post_list.html remove evrything except enclosed in 
+                     {% for postm in posts %} 
+                     -----htmlcode----
+                      {% endfor %}
+        ->  add     {% extends 'blog/base.html' %} , {% block content %}, {% endblock %}
+//  Extend your app<blog> (add post_detail template)
+        ->  create template link to <post_detail> in <post_list>
+                ->  <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        ->  cadd urlpattern to <post_detail> in blog/urls.py
+                ->  path('post/<int:pk>/', views.post_detail, name='post_detail'),
+        ->  add view <post_detail(request, pk)> to blog/views.py
+                ->  import get_object_or_404 from django.shortcuts
+                ->  get <post_detl> value from model<post> (post_detl = get_object_or_404(post, pk=pk))
+                ->  return the rendered template (render(request, 'blog/post_detail.html', {'post_detl':post_detl}))
+        ->  add template <post_detail>
+                ->  create blog/templates/blog/post_detail.html
+                ->  extend 'blog/base.html'
+                ->  put html code within {% block content%} using {{post_detl}} 
+        
                 
