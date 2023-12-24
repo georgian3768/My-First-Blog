@@ -60,4 +60,46 @@
 //  Configure URLs for you app (blog)
         ->  Create blog/urls.py
         ->  Import path from django.urls anf views from current_dir(.)
-        ->  Add path to a view <post_list> into urlpattern[] (path('', views.post_list, name = 'post_list')) 
+        ->  Add path to a view <post_list> into urlpattern[] (path('', views.post_list, name = 'post_list'))
+//  Create views for app <blog>
+        ->  define function post_list(request) in blog/views.py render
+//  Create Template for view <post_list>
+        ->  Create dir \blog\templates\blog
+        ->  Create post_list.html in dir
+//  Start Webserver and goto localhost:8000 (post_list.html is visible)
+//  Deploy on internet
+        ->  Push Repo to Github
+                ->  git status
+                ->  git add .
+                ->  git commit -m "Added Html page"
+                ->  git Push
+        ->  Pull your code to pythonanywhere.com and reload your web app
+                ->  cd ~\<user name>.pythonanywhere.com
+                ->  git pull
+                ->  Reload web app
+//  Link models and templates using view
+        ->  Import model<post> to blog/views (from .models import post)
+        ->  Import timezone from django.utils
+        ->  get values<posts> in model<post> using querysets (posts = post.objects.filter(published_date__lte=timezone.now()).order_by('published_date'))
+        ->  Pass <posts> to template<post_list.html> by altering parameter in render function (render(request, 'blog/post_list.html', {'posts': posts} ) )  
+        ->  In blog/templates/blog/post_list.html display values of <posts> using template tags
+                ->  use for loop to get each entry stored in posts 
+                        {% for post in posts %}
+                             -----html code-----
+                                {{post.published_date}}
+                                {{post.title}}
+                                {{post.text|linebreaksbr}}
+                             -----html code-----
+                        {% endfor %}
+//  Deploy on internet
+        ->  Push Repo to Github
+                ->  git status
+                ->  git add .
+                ->  git commit -m "Added Html page"
+                ->  git Push
+        ->  Pull your code to pythonanywhere.com and reload your web app
+                ->  cd ~\<user name>.pythonanywhere.com
+                ->  git pull
+                ->  Reload web app
+                
+                
