@@ -74,7 +74,7 @@
                 ->  git commit -m "Added Html page"
                 ->  git Push
         ->  Pull your code to pythonanywhere.com and reload your web app
-                ->  cd ~\<user name>.pythonanywhere.com
+                ->  cd ~/<user name>.pythonanywhere.com
                 ->  git pull
                 ->  Reload web app
 //  Link models and templates using view
@@ -98,7 +98,7 @@
                 ->  git commit -m "Added Html page"
                 ->  git Push
         ->  Pull your code to pythonanywhere.com and reload your web app
-                ->  cd ~\<user name>.pythonanywhere.com
+                ->  cd ~/<user name>.pythonanywhere.com
                 ->  git pull
                 ->  Reload web app
 // Use CSS to style up template<post_list.html>
@@ -132,5 +132,18 @@
                 ->  create blog/templates/blog/post_detail.html
                 ->  extend 'blog/base.html'
                 ->  put html code within {% block content%} using {{post_detl}} 
+//  Deploy on internet
+        ->  Push Repo to Github
+                ->  git status
+                ->  git add .
+                ->  git commit -m "Added Html page"
+                ->  git Push
+        ->  Pull your code to pythonanywhere.com and reload your web app
+                ->  cd ~/<user name>.pythonanywhere.com
+                ->  git pull
+        ->  Update the static files on the server
+                ->  workon <your-pythonanywhere-domain>.pythonanywhere.com
+                ->  python manage.py collectstatic
+                ->  Reload web app
         
                 
