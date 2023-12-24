@@ -32,7 +32,7 @@
 //  Create superuser in terminal (python manage.py createsuperuser)
 //  login to django using superuser credentials (127.0.0.1:8000/admin)
 //  add some blog posts{objects}
-//  Deploy on internet
+//  Deploy on internet (pythonanywhere.com)
         ->   Install Git
         ->   Configure Git Repository
                 ->  $ git init (in base dir)
@@ -53,3 +53,11 @@
                         ->  Install pythonanywhere ($ pip3.8 install --user pythonanywhere)
                         ->  Configure your app from GitHub ($ pa_autoconfigure_django.py --python=3.8 https://github.com/<your-github-username>/<my-first-blog.git>)
                         ->  Create SuperUser (db.sqlite is not copied due .gitignore) ($ python manage.py createsuperuser)
+//  Configure URLs for you site (mysite)
+        ->  Edit mysite/urls.py
+        ->  Import include from django.urls
+        ->  Add blog.urls in urlpatterns[] using include() function
+//  Configure URLs for you app (blog)
+        ->  Create blog/urls.py
+        ->  Import path from django.urls anf views from current_dir(.)
+        ->  Add path to a view <post_list> into urlpattern[] (path('', views.post_list, name = 'post_list'))
