@@ -60,4 +60,4 @@
 //  Configure URLs for you app (blog)
         ->  Create blog/urls.py
         ->  Import path from django.urls anf views from current_dir(.)
-        ->  Add path to a view <post_list> into urlpattern[] (path('', views.post_list, name = 'post_list'))
+        ->  Add path to a view <post_list> into urlpattern[] (path('', views.post_list, name = 'post_list')) 
