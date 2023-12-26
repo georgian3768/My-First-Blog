@@ -145,5 +145,41 @@
                 ->  workon <your-pythonanywhere-domain>.pythonanywhere.com
                 ->  python manage.py collectstatic
                 ->  Reload web app
-        
+//  add webpage with forms to create posts
+        ->  add link to <base.html> (a href={% url 'post_new'%})
+        ->  add path to urlpatterns in blog/urls.py (path('/post/new',views.post_new,name = 'post_new'))
+        ->  Create blog/forms.py
+                ->  from django import forms
+                ->  from .models import post
+                ->  class PostForm(forms.ModelForm):
+                        class Meta:
+                                model = post
+                                fields = ('title','text')
+        ->  add post_new(request) in views.py
+                ->  from .forms import PostForm
+                ->  from djang.shortcuts import redirect
+                ->  def post_new(request):
+                        if request.method == 'POST'
+                                form = PostForm(request.POST)
+                                if form.is_valid
+                                        post = form.save(commit = False)
+                                        post.author = request.user
+                                        post.published_date = timezone.now()
+                                        post.save()
+                                        return redirect('post_detail',pk=post.pk)
+                        else:
+                                form = PostForm()
+                                return render(request,'blog/post_detail.html',{'form':form})  
+        ->  create blog/template/blog/post_edit.html
+                ->  {% extends blog/base.html %}
+                        {%block content%}
+                                <h2> New Post</h2>
+                                <form method = 'POST'>
+                                        {%csrf token%}
+                                        {{form.as_p}}
+                                        <button type = 'submit'>Submit</button>
+                                </form>
+                        {% endblock %}     
+//  add functionality to edit an existing post
+        ->  add edit icon with link in blog/post_detail.html
                 
