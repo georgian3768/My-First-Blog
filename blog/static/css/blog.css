@@ -5,6 +5,12 @@
     margin-bottom: 40px;
     padding: 20px 20px 20px 0px;
 }
+.page_footer {
+    
+    
+    
+   
+}
 
 .page_header h1,
 .page_header h1 a,
@@ -12,6 +18,14 @@
 .page_header h1 a:active {
     color: #ffffff;
     font-size: 36pt;
+    text-decoration: none;
+}
+.page_footer p,
+.page_footer h3 a,
+.page_footer h3 a:visited,
+.page_footer h3 a:active {
+    color:#C25100;
+    font-size: 15pt;
     text-decoration: none;
 }
 
