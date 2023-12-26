@@ -182,4 +182,18 @@
                         {% endblock %}     
 //  add functionality to edit an existing post
         ->  add edit icon with link in blog/post_detail.html
-                
+        ->  add path to urlpatterns in blog/urls.py (path('/post/<int:pk>/edit',views.post_edit,name = 'post_edit'))
+        ->  add post_edit(request, pk) in views.py 
+                def post_edit(request, pk):
+                        post_detl = get_object_or_404(post,pk=pk)
+                        if request.method == 'POST':
+                                form = PostForm(request.POST, instance=post_detl)
+                                if form.is_valid:
+                                post_detl = form.save(commit=False)
+                                post_detl.author = request.user
+                                post_detl.published_date = timezone.now()
+                                post_detl.save()
+                                return redirect('blog/post_detil.html',{'post_detl':post_detl})
+                else:
+                        form = PostForm(instance=post_detl)
+                        return render(request, 'blog/post_edit.html',{'form':form})

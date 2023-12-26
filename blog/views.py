@@ -25,3 +25,17 @@ def post_new(request):
     else:    
         form = PostForm()
     return render(request,'blog/post_edit.html',{'form':form})
+
+def post_edit(request, pk):
+    post_detl = get_object_or_404(post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post_detl)
+        if form.is_valid():
+            post_detl = form.save(commit=False)
+            post_detl.author = request.user
+            post_detl.published_date = timezone.now()
+            post_detl.save()
+            return redirect('post_detail', pk=post_detl.pk)
+    else:
+        form = PostForm(instance=post_detl)
+    return render(request, 'blog/post_edit.html', {'form': form})
